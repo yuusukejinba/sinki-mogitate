@@ -11,7 +11,7 @@ class ProductController extends Controller
     public function index()
   {
     $products = Product::all();
-   
+  
     return view('product' , compact('products'));
   }
 
@@ -27,13 +27,13 @@ class ProductController extends Controller
     $form = [
       'name' => $request->name,   
       'price' => $request->price,
-      'image' => $request->image,
+      'image' => $product['image'],
       'description' => $request->description,
     ];
 
     $Products = Product::create($form);
 
-    return view('product');
+    return redirect('/product');
   }
   
 }
