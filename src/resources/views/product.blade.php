@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>お問い合わせフォーム</title>
+  <title>Mogitate</title>
   <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}" />
   <link rel="stylesheet" href="{{ asset('css/product.css') }}" />
 </head> 
@@ -13,7 +13,7 @@
 <body>
     <header class="header">
         <div class="header__title">
-           お問い合わせフォーム 
+            Mogitate 
         </div>
     </header>
 
@@ -28,9 +28,11 @@
             </div>
         </div>
 
+      <form action="/products/search" method="post">
+        @csrf
         <div class="product__list">
           <div class="product__search">
-            <input type="text" name=search placeholder="商品名で検索">
+            <input type="text" name="keyword" placeholder="商品名で検索">
           </div>
             <button class="product__button-submit" type="submit">検索</button>
         </div>
@@ -46,15 +48,20 @@
         </div>
 
         <div class="product__image">
-                @foreach ($products as $product)
-                    <div class="product__content">
-                        <img src="{{ asset('storage/' . $product['image']) }}"  alt="商品画像" class="img-content"/>
-                        
-                        <div class="detail-content">
-                            <p>{{$product->name}}</p>
-                            <p>{{$product->price}}</p>
-                        </div>
+            @foreach ($products as $product)
+                <div class="product__content">
+                    <a href="/products/detail/{{$product->id}}" class="product-link">
+                    <img src="{{ asset('storage/' . $product['image']) }}"  alt="商品画像" class="img-content"/>
+                    </a>    
+                    <div class="detail-content">
+                        <p>{{$product->name}}</p>
+                        <p>{{$product->price}}</p>
                     </div>
-                @endforeach
-            </div>
+                </div>
+            @endforeach
+        </div>
 
+        <div class="pagination">
+                {{ $products->links('pagination::bootstrap-4')}}
+            </div>
+      </form>

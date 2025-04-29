@@ -1,0 +1,10 @@
+.img-content{
+
+    width: 200px;
+    
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+}
