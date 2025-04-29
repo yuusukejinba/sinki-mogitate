@@ -46,7 +46,7 @@ class ProductController extends Controller
     return view('product', compact('products', 'keyword'));
 }
 
-public function Detail($product_id)
+public function detail($product_id)
     {
         $product = Product::find($product_id);
         $seasons = Season::all();

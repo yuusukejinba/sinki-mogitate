@@ -1,21 +1,11 @@
-<!DOCTYPE html>
-<html lang="ja">
+@extends('layouts.app')
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mogitate</title>
-  <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}" />
-  <link rel="stylesheet" href="{{ asset('css/product.css') }}" />
-</head> 
+@section('css')
+<link rel="stylesheet" href="{{ asset('css/product.css') }}">
+@endsection
 
-<body>
-    <header class="header">
-        <div class="header__title">
-            Mogitate 
-        </div>
-    </header>
+@section('content')
+
 
     <main>
         <div class="product">
@@ -65,3 +55,6 @@
                 {{ $products->links('pagination::bootstrap-4')}}
             </div>
       </form>
+</main>
+
+@endsection
